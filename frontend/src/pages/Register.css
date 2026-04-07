@@ -1,0 +1,562 @@
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--green-50) 0%, #f0f7ee 30%, var(--warm-50) 70%, var(--surface) 100%);
+  padding: 24px 16px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== BACKGROUND SHAPES ===== */
+.register-bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.register-bg-shapes .bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.register-bg-shapes .bg-shape-1 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, var(--green-300), var(--green-200));
+  top: -80px;
+  left: -80px;
+  animation: floatShape 22s ease-in-out infinite;
+}
+
+.register-bg-shapes .bg-shape-2 {
+  width: 280px;
+  height: 280px;
+  background: linear-gradient(135deg, var(--warm-200), var(--warm-100));
+  bottom: -60px;
+  right: -60px;
+  animation: floatShape 18s ease-in-out infinite reverse;
+}
+
+.register-bg-shapes .bg-shape-3 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, var(--green-200), var(--green-100));
+  top: 40%;
+  right: 10%;
+  animation: floatShapeCenter 16s ease-in-out infinite;
+}
+
+/* ===== CONTAINER ===== */
+.register-container {
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HEADER ===== */
+.register-header {
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.back-link {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--green-500);
+}
+
+.back-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.register-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-600) 100%);
+  border-radius: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 10px 28px rgba(56, 142, 60, 0.3);
+}
+
+.register-logo svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.register-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 6px;
+}
+
+.register-header h1 span {
+  background: linear-gradient(135deg, var(--green-500), var(--green-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.register-header p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* ===== PROGRESS STEPS ===== */
+.progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.progress-step.active {
+  opacity: 1;
+}
+
+.progress-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--border-light);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s var(--ease-out);
+}
+
+.progress-step.active .progress-step-number {
+  background: linear-gradient(135deg, var(--green-400), var(--green-500));
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.progress-step span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.progress-connector {
+  width: 40px;
+  height: 2px;
+  background: var(--border-light);
+  border-radius: 1px;
+}
+
+/* ===== CARD ===== */
+.register-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+}
+
+/* ===== FORM ===== */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .input-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  transition: all 0.2s var(--ease-out);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-light);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: var(--green-400);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+  background: var(--surface);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.toggle-password:hover {
+  color: var(--text-secondary);
+}
+
+.toggle-password svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===== RADIO GROUP (Sex) ===== */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.radio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 16px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.radio-card:hover {
+  border-color: var(--green-300);
+  background: var(--green-50);
+}
+
+.radio-card.selected {
+  border-color: var(--green-400);
+  background: var(--green-50);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.radio-card svg {
+  width: 28px;
+  height: 28px;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.radio-card.selected svg {
+  color: var(--green-500);
+}
+
+.radio-card span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.radio-card.selected span {
+  color: var(--green-600);
+}
+
+/* ===== ACTIVITY LEVELS ===== */
+.activity-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.activity-card {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.activity-card:hover {
+  border-color: var(--green-300);
+  background: var(--green-50);
+}
+
+.activity-card.selected {
+  border-color: var(--green-400);
+  background: var(--green-50);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.activity-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.activity-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===== ACTIONS ===== */
+.register-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-register-back {
+  padding: 14px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s var(--ease-out);
+}
+
+.btn-register-back:hover {
+  background: var(--green-50);
+  border-color: var(--green-300);
+}
+
+.btn-register-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-register-next,
+.btn-register-submit {
+  width: 100%;
+  padding: 16px 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-600) 100%);
+  color: white;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(56, 142, 60, 0.35);
+  transition: all 0.2s var(--ease-out);
+}
+
+.btn-register-next:hover,
+.btn-register-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(56, 142, 60, 0.4);
+}
+
+.btn-register-next:active,
+.btn-register-submit:active {
+  transform: translateY(0);
+}
+
+.btn-register-next svg,
+.btn-register-submit svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.btn-register-next:hover svg,
+.btn-register-submit:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-register-submit svg {
+  transform: none;
+}
+
+.btn-register-submit:hover svg {
+  transform: scale(1.1);
+}
+
+/* ===== FOOTER ===== */
+.register-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.register-footer a {
+  color: var(--green-500);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.register-footer a:hover {
+  color: var(--green-600);
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 540px) {
+  .register-page {
+    padding: 16px 12px 40px;
+    align-items: flex-start;
+    padding-top: 32px;
+  }
+
+  .register-container {
+    max-width: 100%;
+  }
+
+  .back-link {
+    position: static;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .register-header {
+    margin-bottom: 20px;
+  }
+
+  .register-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+
+  .register-logo svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .register-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .register-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-group {
+    grid-template-columns: 1fr;
+  }
+
+  .progress-step span {
+    display: none;
+  }
+
+  .progress-steps {
+    gap: 8px;
+  }
+
+  .register-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-register-back {
+    justify-content: center;
+  }
+
+  .register-bg-shapes .bg-shape-1 {
+    width: 220px;
+    height: 220px;
+  }
+
+  .register-bg-shapes .bg-shape-2 {
+    width: 160px;
+    height: 160px;
+  }
+
+  .register-bg-shapes .bg-shape-3 {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .register-card {
+    padding: 32px;
+  }
+}
