@@ -37,3 +37,29 @@ class MealSchema(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class UserSchema(BaseModel):
+    id: int
+    email: str
+    passw: str
+
+    class Config:
+        from_attributes = True
+
+
+class LoginSchema(BaseModel):
+    email: str
+    password: str
+
+    class Config:
+        from_attributes = True
+
+
+class UsuarioSchema(BaseModel):
+    email: str
+    name: str
+    admin: Optional[bool]
+
+    class Config:
+        from_attributes = True

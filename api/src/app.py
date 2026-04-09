@@ -12,10 +12,12 @@ LLM_MODEL = "Qwen/Qwen3-0.6B"
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Carrega os modelos
-    app.state.vlm, app.state.llm = load_models(VISION_MODEL, LLM_MODEL)
-    app.state.vlm_processor, app.state.llm_processor = load_processors(
-        VISION_MODEL, LLM_MODEL
-    )
+    models = load_models(VISION_MODEL, LLM_MODEL)
+    app.state.vlm = models["vlm"]
+    app.state.llm = models["llm"]
+    processors = load_processors(VISION_MODEL, LLM_MODEL)
+    app.state.vlm_processor = processors["vlm"]
+    app.state.llm_processor = processors["llm"]
     yield
 
 
